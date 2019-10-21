@@ -4,7 +4,7 @@ const ruleBuyXForPriceOfYAmount = (productCode, quantityPurchased, amountPricedF
     precondition(productCode, "Product code must be present");
     precondition(quantityPurchased >= amountPricedFor, "Amount purchased must be greater than amount priced for. Eg: 'Buy 3 products for the price of 2'");
 
-    return (items) => {
+    return items => {
         const itemsOfInterest = items.filter(item => item.sku === productCode);
         const numberOfTimesQualified = Math.floor(itemsOfInterest.length / quantityPurchased);
         const numberOfItemsReducedToZeroPrice = (quantityPurchased - amountPricedFor) * numberOfTimesQualified;
@@ -19,7 +19,7 @@ const ruleBulkDiscount = (productCode, minimumQuantity, newPrice) => {
     precondition(productCode, "Product code must be present");
     precondition(minimumQuantity > 0, "Minimum quantity must be > 0");
 
-    return (items) => {
+    return items => {
         const itemsOfInterest = items.filter(item => item.sku === productCode);
 
         if (itemsOfInterest.length >= minimumQuantity) {
@@ -34,7 +34,7 @@ const ruleBundleFreeXWithY = (baseProductCode, bundledProductCode) => {
     precondition(baseProductCode, "Base product code must be present");
     precondition(bundledProductCode, "Bundled product code must be present");
 
-    return (items) => {
+    return items => {
         const baseItems = items.filter(item => item.sku === baseProductCode);
         const bundledItems = items.filter(item => item.sku === bundledProductCode);
 
