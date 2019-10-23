@@ -1,6 +1,6 @@
 const {precondition} = require("./utils");
 
-const ruleBuyXForPriceOfYAmount = (productCode, quantityPurchased, amountPricedFor) => {
+const buyXForPriceOfYAmount = (productCode, quantityPurchased, amountPricedFor) => {
     precondition(productCode, "Product code must be present");
     precondition(quantityPurchased >= amountPricedFor, "Amount purchased must be greater than amount priced for. Eg: 'Buy 3 products for the price of 2'");
 
@@ -15,7 +15,7 @@ const ruleBuyXForPriceOfYAmount = (productCode, quantityPurchased, amountPricedF
     }
 };
 
-const ruleBulkDiscount = (productCode, minimumQuantity, newPrice) => {
+const bulkDiscount = (productCode, minimumQuantity, newPrice) => {
     precondition(productCode, "Product code must be present");
     precondition(minimumQuantity > 0, "Minimum quantity must be > 0");
 
@@ -30,7 +30,7 @@ const ruleBulkDiscount = (productCode, minimumQuantity, newPrice) => {
     }
 };
 
-const ruleBundleFreeXWithY = (baseProductCode, bundledProductCode) => {
+const bundleFreeXWithY = (baseProductCode, bundledProductCode) => {
     precondition(baseProductCode, "Base product code must be present");
     precondition(bundledProductCode, "Bundled product code must be present");
 
@@ -46,7 +46,7 @@ const ruleBundleFreeXWithY = (baseProductCode, bundledProductCode) => {
 };
 
 module.exports = {
-    ruleBuyXForPriceOfYAmount,
-    ruleBulkDiscount,
-    ruleBundleFreeXWithY
+    buyXForPriceOfYAmount: buyXForPriceOfYAmount,
+    bulkDiscount: bulkDiscount,
+    bundleFreeXWithY: bundleFreeXWithY
 };

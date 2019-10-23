@@ -1,11 +1,11 @@
 const Checkout = require('./checkout');
-const {ruleBuyXForPriceOfYAmount, ruleBulkDiscount, ruleBundleFreeXWithY} = require("./rules");
+const {buyXForPriceOfYAmount, bulkDiscount, bundleFreeXWithY} = require("./rules");
 
 if (require.main === module) {
     const checkout = new Checkout([
-        ruleBuyXForPriceOfYAmount("atv", 3, 2),
-        ruleBulkDiscount("ipd", 4, 499.99),
-        ruleBundleFreeXWithY("mbp", "vga")
+        buyXForPriceOfYAmount("atv", 3, 2),
+        bulkDiscount("ipd", 4, 499.99),
+        bundleFreeXWithY("mbp", "vga")
     ]);
 
     checkout.scan("ipd");

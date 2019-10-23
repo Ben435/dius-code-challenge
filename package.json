@@ -1,15 +1,13 @@
 {
   "name": "dius-code-challenge",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "DiUS Code Challenge - DiUS Shopping",
+  "main": "src/main.js",
   "scripts": {
-    "test": "jest",
-    "main": "node src/main.js"
+    "start": "node src/main.js",
+    "test": "jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Ben Clare",
   "devDependencies": {
     "jest": "^24.9.0"
   }

@@ -11,10 +11,8 @@ class Checkout {
     }
 
     checkout() {
-        // Apply rules, then run calculation.
-        if (this.rules) {
-            this.rules.forEach(rule => rule(this.scannedItems));
-        }
+        // Apply rules, then run sum prices of all items.
+        this.rules.forEach(rule => rule(this.scannedItems));
         return {
             price: this.scannedItems.map(item => item.price).reduce((a, b) => a + b, 0),
             items: this.scannedItems

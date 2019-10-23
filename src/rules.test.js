@@ -1,11 +1,11 @@
-const {ruleBuyXForPriceOfYAmount, ruleBulkDiscount, ruleBundleFreeXWithY} = require("./rules");
+const {buyXForPriceOfYAmount, bulkDiscount, bundleFreeXWithY} = require("./rules");
 const Checkout = require('./checkout');
 
 describe("X for Y deal", () => {
     let checkout;
 
     beforeEach(() => {
-        checkout = new Checkout([ruleBuyXForPriceOfYAmount("atv", 3, 2)]);
+        checkout = new Checkout([buyXForPriceOfYAmount("atv", 3, 2)]);
     });
 
     it('when does not qualify for deal then does not adjust price', () => {
@@ -68,7 +68,7 @@ describe('bulk discount', () => {
     let checkout;
 
     beforeEach(() => {
-        checkout = new Checkout([ruleBulkDiscount("ipd", 4, 499.99)]);
+        checkout = new Checkout([bulkDiscount("ipd", 4, 499.99)]);
     });
 
     it('when does not qualify for deal then does not adjust price', () => {
@@ -100,7 +100,7 @@ describe('bulk discount', () => {
 describe('bundle deal', () => {
     let checkout;
     beforeEach(() => {
-        checkout = new Checkout([ruleBundleFreeXWithY("mbp", "vga")]);
+        checkout = new Checkout([bundleFreeXWithY("mbp", "vga")]);
     });
 
     it('when does not qualify for deal then does not adjust price', () => {

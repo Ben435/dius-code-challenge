@@ -26,8 +26,6 @@ const getProductBySku = sku => {
     const possibleProducts = products.filter(item => item.sku === sku);
     if (possibleProducts.length === 0) {
         throw new Error("Product not found: " + sku);
-    } else if (possibleProducts.length > 1) {
-        throw new Error("Multiple products with same SKU: " + possibleProducts);
     } else {
         return {...possibleProducts[0]};
     }

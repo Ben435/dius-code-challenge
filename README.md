@@ -1,8 +1,10 @@
 # DiUS Code Challenge - Ben Clare
 
-Run: `npm run main`
+Setup: `npm run install`
 
-Test: `npm run test`
+Run: `npm start`
+
+Test: `npm test`
 
 Can edit what it runs from `src/main.js`.
 
@@ -16,6 +18,50 @@ Each rule can edit the items list in any way it wants.
 
 Each `product` is defined in the `products.js` file. 
 File exports a function to fetch products by id.
+
+### Why this approach?
+Given how discounts are applied, I've generified them out to a series of checks, and effects.
+I use the callback style rules to do both, as they can decide if they should apply, and then how the 
+discount should be applied.
+
+This makes for a highly extensible architecture, as anything that can be coded can be created into a rule. 
+However, to ensure the rules don't "overlap", would take some additional work.
+
+
+#### Ways to extend:
+* Meta rules, for common checks/effects. Applied via something like RxJs's `Observable.pipe()` API.
+```js
+// Would only apply the given rule to items of the specified product code
+// NOTE: Mock/Theoretical API, just to demonstrate point.
+const appliedForProductCode = productCode => {
+    return rule => {
+        return items => {
+            rule(items.filter(item => item.sku === productCode));
+        }
+    }
+};
+
+const demoRule = items => {
+    items.forEach(item => item.price -= 1);
+};
+
+// Applied via something like this
+RuleChain.pipe(
+    appliedForProductCode('vga'),
+    demoRule
+);
+```
+
+* Some way to apply different orderings, to maximize savings for customer.
+* Ordering system, so if eg: rule A only applies if no other discounts are applied. 
+Similar idea to Java servlet filter chain.
+
+### Known problem(s):
+
+As rules and effects are applied in the same "step", the effects of an earlier rule can "overlap" with a following rule.
+This isn't ideal, and would ideally be fixed by separating checks and effects. However, out of scope for this.
+
+------------------------------------------------------------------------------------------------------------------------
 
 ## Instructions Reference
 DiUS is starting a computer store. You have been engaged to build the checkout system. We will start with the following products in our catalogue
