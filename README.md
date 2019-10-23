@@ -61,6 +61,13 @@ Similar idea to Java servlet filter chain.
 As rules and effects are applied in the same "step", the effects of an earlier rule can "overlap" with a following rule.
 This isn't ideal, and would ideally be fixed by separating checks and effects. However, out of scope for this.
 
+Due to how I've applied the rules as well, the rules will edit the items list. Changing prices etc.
+This has the side effect of making a "checkout" single use, and should probably either immutably process checkout, or
+"close" itself when its been "consumed".
+
+Lastly, there's also a known rounding issue. That can be solved by using a proper precision maths library, that properly handles
+decimals and floats, eg: [MathJs](https://mathjs.org), [FinanceJs](http://financejs.org/), etc.
+
 ------------------------------------------------------------------------------------------------------------------------
 
 ## Instructions Reference
