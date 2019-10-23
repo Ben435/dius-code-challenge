@@ -1,6 +1,6 @@
 # DiUS Code Challenge - Ben Clare
 
-Setup: `npm run install`
+Setup: `npm install`
 
 Run: `npm start`
 
