@@ -6,6 +6,8 @@ Run: `npm start`
 
 Test: `npm test`
 
+Test with coverage: `jest --coverage`
+
 Can edit what it runs from `src/main.js`.
 
 ## Project Overview
@@ -26,6 +28,9 @@ discount should be applied.
 
 This makes for a highly extensible architecture, as anything that can be coded can be created into a rule. 
 However, to ensure the rules don't "overlap", would take some additional work.
+This also means a code change needs to be applied when a new rule is introduced. Given, it wouldn't be hard to extend 
+this to support loading duplicates of the rules (eg: *bulk discounts for different products*) from a database, but a new 
+rule with new logic (eg: *buy X and Y and get a free Z*), would require a code change.
 
 
 #### Ways to extend:
@@ -65,7 +70,12 @@ Due to how I've applied the rules as well, the rules will edit the items list. C
 This has the side effect of making a "checkout" single use, and should probably either immutably process checkout, or
 "close" itself when its been "consumed".
 
-Lastly, there's also a known rounding issue. That can be solved by using a proper precision maths library, that properly handles
+Because I've hard-coded the product list, I was worried the rules would edit the original product objects. 
+If they were loaded from eg: a database, each "entry" would be a unique object, so this wouldn't be an issue, 
+but because they are all in memory and reused, I've made the `getProductBySku(...)` call return a shallow copy of 
+the product. It works, because the object just holds primitives, but this isn't a very good long term solution.
+
+There's also a known rounding issue. That can be solved by using a proper precision maths library, that properly handles
 decimals and floats, eg: [MathJs](https://mathjs.org), [FinanceJs](http://financejs.org/), etc.
 
 ------------------------------------------------------------------------------------------------------------------------
