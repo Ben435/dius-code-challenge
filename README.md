@@ -67,7 +67,7 @@ chain.
 As rules and effects are applied in the same "step", the effects of an earlier rule can "overlap" with a following rule.
 This isn't ideal, and would ideally be fixed by separating checks and effects. However, out of scope for this.
 
-Due to how I've applied the rules as well, the rules will edit the items list. Changing prices etc.
+Due to how I've applied the rules, the rules will edit the items list, changing fields, etc.
 This has the side effect of making a "checkout" single use, and should probably either immutably process checkout, or
 "close" itself when its been "consumed".
 
