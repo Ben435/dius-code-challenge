@@ -26,7 +26,8 @@ Given how discounts are applied, I've generified them out to a series of checks,
 I use the callback style rules to do both, as they can decide if they should apply, and then how the 
 discount should be applied.
 
-This makes for a highly extensible architecture, as anything that can be coded can be created into a rule. 
+This makes for a highly extensible architecture, as anything that can be coded can be created into a rule.
+
 However, to ensure the rules don't "overlap", would take some additional work.
 This also means a code change needs to be applied when a new rule is introduced. Given, it wouldn't be hard to extend 
 this to support loading duplicates of the rules (eg: *bulk discounts for different products*) from a database, but a new 
