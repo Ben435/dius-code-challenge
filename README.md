@@ -77,7 +77,7 @@ but because they are all in memory and reused, I've made the `getProductBySku(..
 the product. It works, because the object just holds primitives, but this isn't a very good long term solution.
 
 There's also a known rounding issue. That can be solved by using a proper precision maths library, that properly handles
-decimals and floats, eg: [MathJs](https://mathjs.org), [FinanceJs](http://financejs.org/), etc.
+decimals and floats, eg: [MathJs](https://mathjs.org)
 
 ------------------------------------------------------------------------------------------------------------------------
 
