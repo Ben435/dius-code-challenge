@@ -58,9 +58,9 @@ RuleChain.pipe(
 );
 ```
 
-* Some way to apply different orderings, to maximize savings for customer.
-* Ordering system, so if eg: rule A only applies if no other discounts are applied. 
-Similar idea to Java servlet filter chain.
+* Ordering system, so if eg: rule A only applies if no other discounts are applied. Similar idea to Java servlet filter 
+chain.
+* Some way to apply/simulate different rule orderings, to maximize savings for customer.
 
 ### Known problem(s):
 
